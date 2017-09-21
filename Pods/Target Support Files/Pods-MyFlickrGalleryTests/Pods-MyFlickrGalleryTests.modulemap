@@ -1,0 +1,6 @@
+framework module Pods_MyFlickrGalleryTests {
+  umbrella header "Pods-MyFlickrGalleryTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
