@@ -6,10 +6,14 @@ target 'MyFlickrGallery' do
   use_frameworks!
 
   # Pods for MyFlickrGallery
+  pod 'SwiftyJSON'
 
   target 'MyFlickrGalleryTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Quick'
+    pod 'Nimble'
+    pod 'Fakery'
   end
 
 end
