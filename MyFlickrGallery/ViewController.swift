@@ -17,8 +17,6 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        let aa: Double = 4
-        let a :Int = Int(aa)
         // Dispose of any resources that can be recreated.
     }
 

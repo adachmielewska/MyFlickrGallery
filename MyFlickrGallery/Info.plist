@@ -41,5 +41,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>Endpoint</key>
+	<dict>
+		<key>url</key>
+		<string>$(HOST_NAME)</string>
+		<key>name</key>
+		<string>$(ENVIRONMENT_NAME)</string>
+	</dict>
+	<key>Config</key>
+	<string>$(HOST_NAME)</string>
 </dict>
 </plist>
