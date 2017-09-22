@@ -7,13 +7,14 @@ target 'MyFlickrGallery' do
 
   # Pods for MyFlickrGallery
   pod 'SwiftyJSON'
+  pod 'Moya'
+  pod 'Alamofire'
 
   target 'MyFlickrGalleryTests' do
     inherit! :search_paths
     # Pods for testing
     pod 'Quick'
     pod 'Nimble'
-    pod 'Fakery'
   end
 
 end
