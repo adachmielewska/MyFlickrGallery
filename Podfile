@@ -11,9 +11,6 @@ target 'MyFlickrGallery' do
   target 'MyFlickrGalleryTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'Quick'
-    pod 'Nimble'
-    pod 'Mockingjay'
   end
 
 end

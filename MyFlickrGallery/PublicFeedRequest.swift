@@ -32,7 +32,8 @@ extension PublicFeedRequest: Request {
         switch self {
         case .feed:
             return .url([
-                "format": "json"
+                "format": "json",
+                "nojsoncallback": "1"
                 ])
         }
     }

@@ -8,11 +8,6 @@
 
 import Foundation
 
-enum NetworkErrors: Error {
-    case badInput
-    case noData
-}
-
 protocol Service {
     
     init(serviceConfig: ServiceConfig)

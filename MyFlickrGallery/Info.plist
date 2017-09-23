@@ -49,6 +49,6 @@
 		<string>$(ENVIRONMENT_NAME)</string>
 	</dict>
 	<key>Config</key>
-	<string>$(HOST_NAME)</string>
+	<string>https://api.flickr.com</string>
 </dict>
 </plist>

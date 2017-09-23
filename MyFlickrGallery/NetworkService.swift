@@ -9,12 +9,12 @@
 import Foundation
 import SwiftyJSON
 
-class NetworkService {
+class NetworkService: Service {
     
     private var serviceConfig: ServiceConfig
     private var session: URLSession
     
-    required public init(serviceConfig: ServiceConfig) {
+    required init(serviceConfig: ServiceConfig) {
         self.serviceConfig = serviceConfig
         self.session = URLSession(configuration: URLSessionConfiguration.default)
     }
@@ -23,6 +23,8 @@ class NetworkService {
         guard let urlRequest = try? prepareURLRequest(for: request) else { return }
         let task: URLSessionDataTask = session.dataTask(with: urlRequest) { (data, urlResponse, error) -> Void in
             if let data = data {
+                
+                
                 let response = Response((urlResponse as? HTTPURLResponse, data, error), for: request)
                 onComplete(response)
             }
@@ -45,7 +47,6 @@ class NetworkService {
         switch request.parameters {
         case .body(let params):
             if let params = params as? [String: String] {
-                
                 return (try? JSONSerialization.data(withJSONObject: params, options: .init(rawValue: 0)), nil)
             }
         case .url(let params):

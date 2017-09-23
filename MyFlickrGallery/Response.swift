@@ -9,19 +9,28 @@
 import Foundation
 import SwiftyJSON
 
+enum NetworkErrors: Error {
+    case badInput
+    case noData
+}
+
 enum Response {
     case json(_: JSON)
     case error(_: Int?, _: Error?)
     
-    init(_ response: (r: HTTPURLResponse?, data: Data?, error: Error?), for request: Request) {
-        guard response.r?.statusCode == 200, response.error == nil else {
-            self = .error(response.r?.statusCode, response.error)
+    init(_ response: (response: HTTPURLResponse?, data: Data?, error: Error?), for request: Request) {
+        guard response.response?.statusCode == 200, response.error == nil else {
+            self = .error(response.response?.statusCode, response.error)
             return
         }
         guard let data = response.data else {
-            self = .error(nil, nil)
+            self = .error(response.response?.statusCode, NetworkErrors.noData)
             return
         }
-        self = .json(JSON(data: data))
+        print(JSON(data))
+        
+        
+        
+        self = .json(JSON(data))
     }
 }

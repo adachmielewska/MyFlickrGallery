@@ -12,6 +12,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let service = NetworkService(serviceConfig: ServiceConfig())
+        PostTask().execute(in: service, onComplete: { posts in
+            print("onComplete")
+        }, onError: {_,_ in
+            print("error")
+        })
         // Do any additional setup after loading the view, typically from a nib.
     }
 
