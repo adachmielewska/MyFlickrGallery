@@ -6,15 +6,18 @@
 //  Copyright © 2017 Ada Chmielewska. All rights reserved.
 //
 
+import SwiftyJSON
 @testable import MyFlickrGallery
 
-class ServiceStub: Service {
+final class ServiceStub: Service {
+    
+    var jsonResponse: Any?
     
     init(serviceConfig: ServiceConfig) {
         
     }
     
     func execute(request: Request, onComplete: @escaping (Response) -> Void) {
-        
+        onComplete(Response.json(JSON(jsonResponse ?? "")))
     }
 }

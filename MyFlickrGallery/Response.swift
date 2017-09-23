@@ -27,10 +27,6 @@ enum Response {
             self = .error(response.response?.statusCode, NetworkErrors.noData)
             return
         }
-        print(JSON(data))
-        
-        
-        
         self = .json(JSON(data))
     }
 }

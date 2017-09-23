@@ -11,7 +11,7 @@ import SwiftyJSON
 protocol Parser {
     
     associatedtype Output
-    func parse(json: JSON) -> Output
+    static func parse(json: JSON) -> Output
 }
 
 struct Post {
@@ -20,27 +20,47 @@ struct Post {
     let author: String
     let tags: [String]
     let imageURL: String
-    let description: String
-    let createdDate: String
-    let publishedDate: String
+    //let description: String
+    let createdDate: Date
+    let publishedDate: Date
     
-    init(json: JSON) {
-        title = json["title"].stringValue
-        author = json["author"].stringValue
-        tags =  [""] //json["tags"].array
-        imageURL = json["media"].stringValue
-        description = json["description"].stringValue
-        createdDate = json["date_taken"].stringValue
-        publishedDate = json["published"].stringValue
+    init(title: String, author: String, tags: [String], imageURL: String, createdDate: Date, publishedDate: Date) {
+        self.title = title
+        self.author = author
+        self.tags = tags
+        self.imageURL = imageURL
+        self.createdDate = createdDate
+        self.publishedDate = publishedDate
     }
 }
 
-class PostListParser: Parser {
+extension Post: Parser {
+    typealias Output = Post
     
-    typealias Output = [Post]
+    static func parse(json: JSON) -> Post {
+        let title = json["title"].stringValue
+        let author = parseAuthorName(author: json["author"].stringValue)
+        let tags =  separateTags(from: json["tags"].stringValue)
+        let imageURL = json["media"]["m"].stringValue
+        let createdDate = parseDate(string: json["date_taken"].stringValue)
+        let publishedDate = parseDate(string: json["published"].stringValue)
+        return Post(title: title, author: author, tags: tags, imageURL: imageURL, createdDate: createdDate, publishedDate: publishedDate)
+    }
     
-    func parse(json: JSON) -> [Post] {
-        let items = json["items"].arrayValue
-        return items.flatMap { Post(json: $0)}
+    private static func parseAuthorName(author: String) -> String {
+        guard let emailRange = author.range(of: "nobody@flickr.com (\""), let closingBracketRange = author.range(of: "\")", options: .backwards) else { return author }
+        return author
+            .replacingCharacters(in: closingBracketRange, with: "")
+            .replacingCharacters(in: emailRange, with: "")
+    }
+
+    private static func separateTags(from tags: String) -> [String] {
+        guard !tags.isEmpty else { return [] }
+        return tags.components(separatedBy: " ")
+    }
+    
+    private static func parseDate(string: String) -> Date {
+        guard let date =  ISO8601DateFormatter().date(from: string) else { return Date.distantPast}
+        return date
     }
 }
