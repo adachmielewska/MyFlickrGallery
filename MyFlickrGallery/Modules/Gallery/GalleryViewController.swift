@@ -18,8 +18,16 @@ class GalleryViewController: UIViewController {
             tableView.allowsSelection = false
             tableView.dataSource = self
             tableView.delegate = self
+            tableView.separatorStyle = .none
+            tableView.addSubview(refreshControl)
         }
     }
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+        return refreshControl
+    }()
     
     private let galleryViewModel: GalleryViewModel
 
@@ -35,11 +43,19 @@ class GalleryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         galleryViewModel.delegate = self
+        navigationController?.navigationBar.barTintColor = UIColor.darkGray
+        navigationController?.navigationBar.tintColor = UIColor.magenta
+        view.backgroundColor = UIColor.gray
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func handleRefresh(refreshControl: UIRefreshControl) {
+        galleryViewModel.refreshContent()
+        refreshControl.endRefreshing()
     }
 }
 
@@ -47,6 +63,8 @@ extension GalleryViewController: GalleryViewModelDelegate {
     
     func updated() {
         DispatchQueue.main.async { [weak self] in
+            
+            print("feed: ", self?.galleryViewModel.feed.count)
             self?.tableView.reloadData()
         }
     }

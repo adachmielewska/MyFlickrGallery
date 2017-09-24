@@ -24,6 +24,10 @@ class GalleryCellViewModel {
         return post.author
     }
     
+    var imageURL: URL? {
+        return URL(string: post.imageURL)
+    }
+    
     var tags: String {
         return post.tags
             .map { "#\($0)" }

@@ -17,24 +17,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="244.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kotek" translatesAutoresizingMaskIntoConstraints="NO" id="7jy-4O-X5N">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7jy-4O-X5N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="244.5"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RdC-ij-HpP">
-                        <rect key="frame" x="0.0" y="204.5" width="375" height="40"/>
+                        <rect key="frame" x="0.0" y="184.5" width="375" height="60"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yan-oG-vdb">
-                                <rect key="frame" x="15" y="9" width="345" height="21"/>
+                                <rect key="frame" x="15" y="19.5" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.34241224315068491" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.64830372431506844" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Yan-oG-vdb" firstAttribute="leading" secondItem="RdC-ij-HpP" secondAttribute="leading" constant="15" id="IqP-Jm-zAX"/>
-                            <constraint firstAttribute="height" constant="40" id="fTT-tc-ASH"/>
-                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Yan-oG-vdb" secondAttribute="trailing" constant="15" id="wml-du-XSi"/>
+                            <constraint firstAttribute="height" constant="60" id="fTT-tc-ASH"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Yan-oG-vdb" secondAttribute="trailing" constant="15" id="wml-du-XSi"/>
                             <constraint firstItem="Yan-oG-vdb" firstAttribute="centerY" secondItem="RdC-ij-HpP" secondAttribute="centerY" id="xbh-0r-Z8Q"/>
                         </constraints>
                     </view>
@@ -50,13 +50,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="gradientView" destination="RdC-ij-HpP" id="9yO-qF-7wL"/>
                 <outlet property="photoView" destination="7jy-4O-X5N" id="PHu-ee-fRv"/>
                 <outlet property="titleLabel" destination="Yan-oG-vdb" id="bpR-8o-TPe"/>
             </connections>
             <point key="canvasLocation" x="-173.5" y="-199.5"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="kotek" width="407" height="306"/>
-    </resources>
 </document>

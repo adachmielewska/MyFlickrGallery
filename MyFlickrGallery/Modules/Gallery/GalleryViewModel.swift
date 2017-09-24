@@ -15,6 +15,7 @@ protocol GalleryViewModelDelegate: class {
 
 class GalleryViewModel {
 
+    let provider: PublicFeedProvider
     weak var delegate: GalleryViewModelDelegate?
     var feed: [GalleryCellViewModel] = [] {
         didSet {
@@ -23,9 +24,13 @@ class GalleryViewModel {
     }
     
     init(provider: PublicFeedProvider) {
-
-        provider.getPublicFeed(onComplete: { posts in
-            self.feed = posts.map { GalleryCellViewModel(post: $0) }
+        self.provider = provider
+        refreshContent()
+    }
+    
+    func refreshContent() {
+        provider.getPublicFeed(onComplete: { [weak self] posts in
+            self?.feed.insert(contentsOf: posts.map { GalleryCellViewModel(post: $0) }, at: 0)
         })
     }
 }
