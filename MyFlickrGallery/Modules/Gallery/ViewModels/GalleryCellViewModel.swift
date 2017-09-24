@@ -34,6 +34,10 @@ class GalleryCellViewModel {
             .joined(separator: " ")
     }
     
+    var takenDate: Date {
+        return post.takenDate
+    }
+    
     var takenAt: String {
         return "Taken at \(DateFormatter.dateMedium.string(from: post.takenDate))"
     }

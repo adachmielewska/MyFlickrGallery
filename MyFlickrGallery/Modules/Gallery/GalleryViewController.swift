@@ -44,7 +44,16 @@ class GalleryViewController: UIViewController {
         galleryViewModel.delegate = self
         navigationController?.navigationBar.barTintColor = UIColor.darkGray
         navigationController?.navigationBar.tintColor = UIColor.magenta
-        view.backgroundColor = UIColor.gray
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: galleryViewModel.orderTitle(), style: .plain, target: self, action: #selector(handleOrder(barItem:)))
+    }
+    
+    @objc func handleOrder(barItem: UIBarButtonItem) {
+        galleryViewModel.orderFeed()
+        refreshOrderButton()
+    }
+    
+    private func refreshOrderButton() {
+        navigationItem.rightBarButtonItem?.title = galleryViewModel.orderTitle()
     }
 
     @objc func handleRefresh(refreshControl: UIRefreshControl) {
@@ -57,8 +66,6 @@ extension GalleryViewController: GalleryViewModelDelegate {
     
     func updated() {
         DispatchQueue.main.async { [weak self] in
-            
-            print("feed: ", self?.galleryViewModel.feed.count)
             self?.tableView.reloadData()
         }
     }
@@ -75,7 +82,6 @@ extension GalleryViewController: UITableViewDataSource {
             cell.update(galleryCellViewModel: galleryViewModel.feed[indexPath.row])
             return cell
         }
-        
         return UITableViewCell()
     }
 }

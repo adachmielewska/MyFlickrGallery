@@ -12,9 +12,10 @@ import SwiftyJSON
 final class ServiceStub: Service {
     
     var jsonResponse: Any?
+    let serviceConfig: ServiceConfig
     
     init(serviceConfig: ServiceConfig) {
-        
+        self.serviceConfig = serviceConfig
     }
     
     func execute(request: Request, onComplete: @escaping (Response) -> Void) {
