@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import SDWebImage
 
 enum DetailsGallerySections: Int {
     
-    case photo = 0, title, author, tags, dates
+    case title = 0, author, tags, dates
     
-    func sectionTitle() -> String? {
+    func sectionTitle() -> String {
         switch self {
         case .title:
             return "TITLE"
@@ -22,8 +23,6 @@ enum DetailsGallerySections: Int {
             return "TAGS"
         case .dates:
             return "DATES"
-        default:
-            return nil
         }
     }
     
@@ -37,8 +36,6 @@ enum DetailsGallerySections: Int {
             return [galleryCellModel.tags]
         case .dates:
             return [galleryCellModel.takenAt, galleryCellModel.publishedAt]
-        default:
-            return []
         }
     }
     
@@ -54,17 +51,20 @@ enum DetailsGallerySections: Int {
 
 class DetailsGalleryViewController: UIViewController {
     
+    private let textCellIdentifier = "DetailsGalleryTextCell"
+    private let sectionCellIdentifier = "DetailsGallerySectionCell"
+    
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
-            tableView.register(UINib(nibName: "DetailsGalleryPhotoCell", bundle: nil), forCellReuseIdentifier: "DetailsGalleryPhotoCell")
-            tableView.register(UINib(nibName: "DetailsGalleryTextCell", bundle: nil), forCellReuseIdentifier: "DetailsGalleryTextCell")
-            tableView.register(UINib(nibName: "DetailsGallerySectionCell", bundle: nil), forCellReuseIdentifier: "DetailsGallerySectionCell")
+            tableView.register(UINib(nibName: textCellIdentifier, bundle: nil), forCellReuseIdentifier: textCellIdentifier)
+            tableView.register(UINib(nibName: sectionCellIdentifier, bundle: nil), forCellReuseIdentifier: sectionCellIdentifier)
             tableView.allowsSelection = false
             tableView.dataSource = self
             tableView.delegate = self
             tableView.separatorStyle = .none
         }
     }
+    @IBOutlet private weak var photoView: UIImageView!
     
     let viewModel: GalleryCellViewModel
     
@@ -77,51 +77,44 @@ class DetailsGalleryViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    override func viewDidLoad() {
+        photoView.sd_setShowActivityIndicatorView(true)
+        photoView.sd_setIndicatorStyle(.gray)
+        photoView.sd_setImage(with: viewModel.imageURL, placeholderImage: nil)
+    }
 }
 
-extension DetailsGalleryViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    internal func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsGallerySectionCell") as? DetailsGallerySectionCell {
-            if let title = DetailsGallerySections.init(rawValue: section)?.sectionTitle() {
-                cell.configure(title: title)
-                return cell
-            }
-           return nil
-        }
-        return nil
-    }
-    
-    internal func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 0 : 20
-    }
+extension DetailsGalleryViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return DetailsGallerySections.dates.rawValue + 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (DetailsGallerySections.init(rawValue: section)?.numberOfRows())!
+        guard let rows = DetailsGallerySections.init(rawValue: section)?.numberOfRows() else { return 1 }
+        return rows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case DetailsGallerySections.photo.rawValue:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsGalleryPhotoCell", for: indexPath) as? DetailsGalleryPhotoCell {
-                cell.configure(image: #imageLiteral(resourceName: "kotek"))
-                return cell
-            }
-        default:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsGalleryTextCell", for: indexPath) as? DetailsGalleryTextCell {
-                cell.configure(title: (DetailsGallerySections.init(rawValue: indexPath.section)?.data(galleryCellModel: viewModel)[indexPath.row])!)
-                return cell
-            }
-
-        }
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath) as? DetailsGalleryTextCell else { return UITableViewCell() }
+        guard let title = DetailsGallerySections.init(rawValue: indexPath.section)?.data(galleryCellModel: viewModel)[indexPath.row] else { return UITableViewCell() }
+        cell.configure(title: title)
+        return cell
     }
 }
 
-
+extension DetailsGalleryViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: sectionCellIdentifier) as? DetailsGallerySectionCell else {
+            return nil
+        }
+        guard let title =  DetailsGallerySections.init(rawValue: section)?.sectionTitle() else { return nil }
+        cell.configure(title: title)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+}

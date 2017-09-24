@@ -19,6 +19,9 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SaD-1o-Gvk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="133.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="133.5" id="wf6-fA-P1M"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <constraints>

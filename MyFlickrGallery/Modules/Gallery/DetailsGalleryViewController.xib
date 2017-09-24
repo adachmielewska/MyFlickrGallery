@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailsGalleryViewController" customModule="MyFlickrGallery" customModuleProvider="target">
             <connections>
+                <outlet property="photoView" destination="kxg-rp-4Ta" id="ns7-JX-z0w"/>
                 <outlet property="tableView" destination="Ax4-T3-KzR" id="0CP-og-y44"/>
                 <outlet property="view" destination="iN0-l3-epB" id="EvG-Pb-ct7"/>
             </connections>
@@ -20,19 +21,29 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kxg-rp-4Ta">
+                    <rect key="frame" x="0.0" y="20" width="375" height="270"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="270" id="vut-sv-R2t"/>
+                    </constraints>
+                </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ax4-T3-KzR">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <rect key="frame" x="0.0" y="305" width="375" height="362"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ax4-T3-KzR" secondAttribute="trailing" id="0j1-w9-2Sk"/>
-                <constraint firstItem="Ax4-T3-KzR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="51k-S4-Nxc"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Ax4-T3-KzR" secondAttribute="bottom" id="U1F-5n-cpN"/>
-                <constraint firstItem="Ax4-T3-KzR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="qqf-iB-JEZ"/>
+                <constraint firstItem="kxg-rp-4Ta" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="1FZ-Wr-JlG"/>
+                <constraint firstItem="Ax4-T3-KzR" firstAttribute="top" secondItem="kxg-rp-4Ta" secondAttribute="bottom" constant="15" id="6Nq-tu-MsP"/>
+                <constraint firstItem="Ax4-T3-KzR" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="7Ag-Py-mwq"/>
+                <constraint firstItem="Ax4-T3-KzR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Cif-AC-ggV"/>
+                <constraint firstItem="kxg-rp-4Ta" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="bjk-mj-MGf"/>
+                <constraint firstItem="Ax4-T3-KzR" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="rZT-Sd-x5X"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kxg-rp-4Ta" secondAttribute="trailing" id="sSY-u2-Y1W"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="99.5" y="72.5"/>
         </view>
     </objects>
 </document>
