@@ -20,8 +20,11 @@ class GalleryViewController: UIViewController {
             tableView.delegate = self
         }
     }
+    
+    private let galleryViewModel: GalleryViewModel
 
-    init() {
+    init(galleryViewModel: GalleryViewModel) {
+        self.galleryViewModel = galleryViewModel
         super.init(nibName: "GalleryViewController", bundle: nil)
     }
     
@@ -31,12 +34,7 @@ class GalleryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let service = NetworkService(serviceConfig: ServiceConfig())
-        PostTask().execute(in: service, onComplete: { posts in
-            print("onComplete")
-        }, onError: {_,_ in
-            print("error")
-        })
+        galleryViewModel.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,15 +43,24 @@ class GalleryViewController: UIViewController {
     }
 }
 
+extension GalleryViewController: GalleryViewModelDelegate {
+    
+    func updated() {
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+}
+
 extension GalleryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return galleryViewModel.feed.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "GalleryImageCell", for: indexPath) as? GalleryImageCell {
-            cell.update()
+            cell.update(galleryCellViewModel: galleryViewModel.feed[indexPath.row])
             return cell
         }
         
@@ -64,4 +71,3 @@ extension GalleryViewController: UITableViewDataSource {
 extension GalleryViewController: UITableViewDelegate {
     
 }
-

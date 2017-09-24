@@ -17,7 +17,7 @@ extension Post: Equatable {
             lhs.tags == rhs.tags &&
             lhs.imageURL == rhs.imageURL &&
             //lhs.description == rhs.description &&
-            lhs.createdDate == rhs.createdDate &&
+            lhs.takenDate == rhs.takenDate &&
             lhs.publishedDate == rhs.publishedDate
     }
 }

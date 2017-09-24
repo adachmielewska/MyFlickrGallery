@@ -14,15 +14,15 @@ struct Post {
     let author: String
     let tags: [String]
     let imageURL: String
-    let createdDate: Date
+    let takenDate: Date
     let publishedDate: Date
     
-    init(title: String, author: String, tags: [String], imageURL: String, createdDate: Date, publishedDate: Date) {
+    init(title: String, author: String, tags: [String], imageURL: String, takenDate: Date, publishedDate: Date) {
         self.title = title
         self.author = author
         self.tags = tags
         self.imageURL = imageURL
-        self.createdDate = createdDate
+        self.takenDate = takenDate
         self.publishedDate = publishedDate
     }
 }
@@ -35,9 +35,9 @@ extension Post: Parser {
         let author = parseAuthorName(author: json["author"].stringValue)
         let tags =  separateTags(from: json["tags"].stringValue)
         let imageURL = json["media"]["m"].stringValue
-        let createdDate = parseDate(string: json["date_taken"].stringValue)
+        let takenDate = parseDate(string: json["date_taken"].stringValue)
         let publishedDate = parseDate(string: json["published"].stringValue)
-        return Post(title: title, author: author, tags: tags, imageURL: imageURL, createdDate: createdDate, publishedDate: publishedDate)
+        return Post(title: title, author: author, tags: tags, imageURL: imageURL, takenDate: takenDate, publishedDate: publishedDate)
     }
     
     private static func parseAuthorName(author: String) -> String {

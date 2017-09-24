@@ -13,8 +13,8 @@ class GalleryImageCell: UITableViewCell {
     @IBOutlet private weak var photoView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     
-    func update() {
+    func update(galleryCellViewModel: GalleryCellViewModel) {
         photoView.image = #imageLiteral(resourceName: "kotek")
-        titleLabel.text = "Kotek"
+        titleLabel.text = galleryCellViewModel.title
     }
 }
