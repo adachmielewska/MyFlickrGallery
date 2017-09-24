@@ -7,6 +7,7 @@ target 'MyFlickrGallery' do
 
   # Pods for MyFlickrGallery
   pod 'SwiftyJSON'
+  pod 'SDWebImage'
 
   target 'MyFlickrGalleryTests' do
     inherit! :search_paths
