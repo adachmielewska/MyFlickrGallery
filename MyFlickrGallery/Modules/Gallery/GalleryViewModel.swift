@@ -30,7 +30,7 @@ class GalleryViewModel {
     
     func refreshContent() {
         provider.getPublicFeed(onComplete: { [weak self] posts in
-            self?.feed.insert(contentsOf: posts.map { GalleryCellViewModel(post: $0) }, at: 0)
+            posts.isEmpty ? self?.refreshContent() : self?.feed.insert(contentsOf: posts.map { GalleryCellViewModel(post: $0) }, at: 0)
         })
     }
 }

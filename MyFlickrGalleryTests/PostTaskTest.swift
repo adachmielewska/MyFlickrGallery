@@ -29,8 +29,8 @@ class PostTaskTest: XCTestCase {
     
     func testPostParse() {
         let expectedData = [
-            Post(title: "DSC_4436.jpg", author: "va1berg", tags: [], imageURL: "https://farm5.staticflickr.com/4435/36551313354_a607e8ff63_m.jpg", createdDate: ISO8601DateFormatter().date(from: "2017-07-10T08:04:51-08:00")!, publishedDate: ISO8601DateFormatter().date(from: "2017-09-23T11:01:59Z")!),
-             Post(title: "Autumn", author: "emmagrant969", tags: ["flickr", "insta"], imageURL: "https://farm5.staticflickr.com/4482/36591655943_d7c39a0f09_m.jpg", createdDate: ISO8601DateFormatter().date(from: "2017-09-23T03:55:00-08:00")!, publishedDate: ISO8601DateFormatter().date(from: "2017-09-23T11:02:03Z")!),
+            Post(title: "DSC_4436.jpg", author: "va1berg", tags: [], imageURL: "https://farm5.staticflickr.com/4435/36551313354_a607e8ff63_m.jpg", takenDate: ISO8601DateFormatter().date(from: "2017-07-10T08:04:51-08:00")!, publishedDate: ISO8601DateFormatter().date(from: "2017-09-23T11:01:59Z")!),
+            Post(title: "Autumn", author: "emmagrant969", tags: ["flickr", "insta"], imageURL: "https://farm5.staticflickr.com/4482/36591655943_d7c39a0f09_m.jpg", takenDate: ISO8601DateFormatter().date(from: "2017-09-23T03:55:00-08:00")!, publishedDate: ISO8601DateFormatter().date(from: "2017-09-23T11:02:03Z")!)
         ]
         var returnedData: [Post] = []
         postTask.execute(in: testService, onComplete: { posts in

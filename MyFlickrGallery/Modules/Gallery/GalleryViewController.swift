@@ -15,7 +15,6 @@ class GalleryViewController: UIViewController {
             tableView.register(UINib(nibName: "GalleryImageCell", bundle: nil), forCellReuseIdentifier: "GalleryImageCell")
             tableView.rowHeight = 270
             tableView.tableFooterView = UIView()
-            tableView.allowsSelection = false
             tableView.dataSource = self
             tableView.delegate = self
             tableView.separatorStyle = .none
@@ -48,11 +47,6 @@ class GalleryViewController: UIViewController {
         view.backgroundColor = UIColor.gray
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @objc func handleRefresh(refreshControl: UIRefreshControl) {
         galleryViewModel.refreshContent()
         refreshControl.endRefreshing()
@@ -88,4 +82,8 @@ extension GalleryViewController: UITableViewDataSource {
 
 extension GalleryViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsViewController = DetailsGalleryViewController(viewModel: galleryViewModel.feed[indexPath.row])
+        self.navigationController?.pushViewController(detailsViewController, animated: true)
+    }
 }
