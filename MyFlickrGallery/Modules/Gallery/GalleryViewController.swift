@@ -12,7 +12,7 @@ class GalleryViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
-            tableView.register(UINib(nibName: "GalleryImageCell", bundle: nil), forCellReuseIdentifier: "GalleryImageCell")
+            tableView.register(UINib(nibName: galleryImageCellIdentifier, bundle: nil), forCellReuseIdentifier: galleryImageCellIdentifier)
             tableView.rowHeight = 270
             tableView.tableFooterView = UIView()
             tableView.dataSource = self
@@ -29,6 +29,7 @@ class GalleryViewController: UIViewController {
     }()
     
     private let galleryViewModel: GalleryViewModel
+    private let galleryImageCellIdentifier = "GalleryImageCell"
 
     init(galleryViewModel: GalleryViewModel) {
         self.galleryViewModel = galleryViewModel
@@ -78,7 +79,7 @@ extension GalleryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "GalleryImageCell", for: indexPath) as? GalleryImageCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: galleryImageCellIdentifier, for: indexPath) as? GalleryImageCell {
             cell.update(galleryCellViewModel: galleryViewModel.feed[indexPath.row])
             return cell
         }
