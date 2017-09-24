@@ -8,19 +8,12 @@
 
 import SwiftyJSON
 
-protocol Parser {
-    
-    associatedtype Output
-    static func parse(json: JSON) -> Output
-}
-
 struct Post {
     
     let title: String
     let author: String
     let tags: [String]
     let imageURL: String
-    //let description: String
     let createdDate: Date
     let publishedDate: Date
     
