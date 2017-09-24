@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GalleryViewController.swift
 //  MyFlickrGallery
 //
 //  Created by Ada Chmielewska on 21.09.2017.
@@ -8,8 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GalleryViewController: UIViewController {
 
+    init() {
+        super.init(nibName: "GalleryViewController", bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let service = NetworkService(serviceConfig: ServiceConfig())

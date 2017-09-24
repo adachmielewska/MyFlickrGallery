@@ -18,12 +18,19 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Config</key>
+	<string>$(HOST_NAME)</string>
+	<key>Endpoint</key>
+	<dict>
+		<key>name</key>
+		<string>$(ENVIRONMENT_NAME)</string>
+		<key>url</key>
+		<string>$(HOST_NAME)</string>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -41,14 +48,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>Endpoint</key>
-	<dict>
-		<key>url</key>
-		<string>$(HOST_NAME)</string>
-		<key>name</key>
-		<string>$(ENVIRONMENT_NAME)</string>
-	</dict>
-	<key>Config</key>
-	<string>$(HOST_NAME)</string>
 </dict>
 </plist>

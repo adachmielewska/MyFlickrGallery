@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		3FB88A43719E9E23237ECB77 /* Pods_MyFlickrGalleryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5344D73B6AD7D03AA3F7ABFE /* Pods_MyFlickrGalleryTests.framework */; };
 		510DB4811F7410620019BA2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510DB4801F7410620019BA2B /* AppDelegate.swift */; };
-		510DB4831F7410620019BA2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510DB4821F7410620019BA2B /* ViewController.swift */; };
-		510DB4861F7410620019BA2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 510DB4841F7410620019BA2B /* Main.storyboard */; };
+		510DB4831F7410620019BA2B /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510DB4821F7410620019BA2B /* GalleryViewController.swift */; };
 		510DB4881F7410620019BA2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 510DB4871F7410620019BA2B /* Assets.xcassets */; };
 		510DB48B1F7410620019BA2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 510DB4891F7410620019BA2B /* LaunchScreen.storyboard */; };
 		510DB4961F7410620019BA2B /* MyFlickrGalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510DB4951F7410620019BA2B /* MyFlickrGalleryTests.swift */; };
@@ -29,6 +28,7 @@
 		51BFA4D41F77007D0090D4B1 /* PostTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BFA4D31F77007C0090D4B1 /* PostTask.swift */; };
 		51BFA4D61F7701050090D4B1 /* PostsListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BFA4D51F7701050090D4B1 /* PostsListParser.swift */; };
 		51D2C84E1F77A3850026C5AF /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D2C84D1F77A3850026C5AF /* Parser.swift */; };
+		51D2C8531F77A6900026C5AF /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51D2C8521F77A6900026C5AF /* GalleryViewController.xib */; };
 		C1A7A9B7812C949606B559D8 /* Pods_MyFlickrGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0858533FC5F404473832CA28 /* Pods_MyFlickrGallery.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,8 +48,7 @@
 		0F06222780A23E6F9D1F4DF9 /* Pods-MyFlickrGallery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFlickrGallery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFlickrGallery/Pods-MyFlickrGallery.debug.xcconfig"; sourceTree = "<group>"; };
 		510DB47D1F7410620019BA2B /* MyFlickrGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFlickrGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		510DB4801F7410620019BA2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		510DB4821F7410620019BA2B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		510DB4851F7410620019BA2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		510DB4821F7410620019BA2B /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		510DB4871F7410620019BA2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		510DB48A1F7410620019BA2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		510DB48C1F7410620019BA2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,6 +70,7 @@
 		51BFA4D31F77007C0090D4B1 /* PostTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTask.swift; sourceTree = "<group>"; };
 		51BFA4D51F7701050090D4B1 /* PostsListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListParser.swift; sourceTree = "<group>"; };
 		51D2C84D1F77A3850026C5AF /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		51D2C8521F77A6900026C5AF /* GalleryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryViewController.xib; sourceTree = "<group>"; };
 		5344D73B6AD7D03AA3F7ABFE /* Pods_MyFlickrGalleryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFlickrGalleryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6AA566BC437B0D931A61E0F /* Pods-MyFlickrGallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFlickrGallery.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFlickrGallery/Pods-MyFlickrGallery.release.xcconfig"; sourceTree = "<group>"; };
 		E9A925EAD2DBE85F7EB0ECEA /* Pods-MyFlickrGalleryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFlickrGalleryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyFlickrGalleryTests/Pods-MyFlickrGalleryTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -122,7 +122,6 @@
 				51D2C84A1F77A3140026C5AF /* Common */,
 				510DB4801F7410620019BA2B /* AppDelegate.swift */,
 				51D2C8481F77A2730026C5AF /* Modules */,
-				510DB4841F7410620019BA2B /* Main.storyboard */,
 				510DB4871F7410620019BA2B /* Assets.xcassets */,
 				510DB4891F7410620019BA2B /* LaunchScreen.storyboard */,
 				510DB48C1F7410620019BA2B /* Info.plist */,
@@ -196,7 +195,8 @@
 		51D2C84F1F77A3EB0026C5AF /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
-				510DB4821F7410620019BA2B /* ViewController.swift */,
+				510DB4821F7410620019BA2B /* GalleryViewController.swift */,
+				51D2C8521F77A6900026C5AF /* GalleryViewController.xib */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -311,8 +311,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				510DB48B1F7410620019BA2B /* LaunchScreen.storyboard in Resources */,
+				51D2C8531F77A6900026C5AF /* GalleryViewController.xib in Resources */,
 				510DB4881F7410620019BA2B /* Assets.xcassets in Resources */,
-				510DB4861F7410620019BA2B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +440,7 @@
 			files = (
 				5142BB9E1F759FE900404BD0 /* Response.swift in Sources */,
 				5142BB9C1F759DC100404BD0 /* PublicFeedRequest.swift in Sources */,
-				510DB4831F7410620019BA2B /* ViewController.swift in Sources */,
+				510DB4831F7410620019BA2B /* GalleryViewController.swift in Sources */,
 				5142BBA21F765A5E00404BD0 /* Operation.swift in Sources */,
 				51D2C84E1F77A3850026C5AF /* Parser.swift in Sources */,
 				5142BB9A1F759D7B00404BD0 /* Request.swift in Sources */,
@@ -476,14 +476,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		510DB4841F7410620019BA2B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				510DB4851F7410620019BA2B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		510DB4891F7410620019BA2B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
