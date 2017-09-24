@@ -49,7 +49,6 @@ class GalleryViewController: UIViewController {
     
     @objc func handleOrder(barItem: UIBarButtonItem) {
         galleryViewModel.orderFeed()
-        refreshOrderButton()
     }
     
     private func refreshOrderButton() {
@@ -67,6 +66,7 @@ extension GalleryViewController: GalleryViewModelDelegate {
     func updated() {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
+            self?.refreshOrderButton()
         }
     }
 }
